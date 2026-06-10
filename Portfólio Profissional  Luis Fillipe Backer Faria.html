@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luis Fillipe — Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0B0F1A;
+      --surface:  #131929;
+      --border:   #1E2740;
+      --accent:   #4F8EF7;
+      --accent2:  #7B5CF0;
+      --text:     #E8EDF7;
+      --muted:    #7A8BA8;
+      --radius:   12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 48px;
+      background: rgba(11,15,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px; font-weight: 700;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 14px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 120px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: 30%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,92,240,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px; font-weight: 500;
+    }
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 700; line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .hero-name span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 18px; color: var(--muted);
+      max-width: 520px; margin-bottom: 40px; line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 28px; border-radius: 8px;
+      font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: all .2s; cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+    }
+    .btn-primary:hover { opacity: .85; transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid var(--border); color: var(--text);
+      background: transparent;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SEÇÕES ── */
+    section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px; font-weight: 500;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      margin-bottom: 48px; line-height: 1.2;
+    }
+
+    /* ── SOBRE ── */
+    .sobre-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .sobre-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .sobre-text p strong { color: var(--text); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .tag {
+      padding: 6px 14px; border-radius: 20px;
+      border: 1px solid var(--border); font-size: 13px; color: var(--muted);
+      background: var(--surface);
+    }
+    .tag.highlight { border-color: var(--accent); color: var(--accent); }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ── HABILIDADES ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .skill-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color .2s, transform .2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .skill-icon { font-size: 28px; margin-bottom: 12px; }
+    .skill-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px; font-weight: 600; margin-bottom: 8px;
+    }
+    .skill-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .skill-bar { margin-top: 16px; height: 4px; background: var(--border); border-radius: 2px; }
+    .skill-fill {
+      height: 100%; border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 1s ease;
+    }
+
+    /* ── PROJETOS ── */
+    #projetos { background: var(--surface); max-width: 100%; padding: 100px 48px; }
+    #projetos > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
+    .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+    .proj-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px;
+      transition: border-color .2s, transform .2s;
+      display: flex; flex-direction: column;
+    }
+    .proj-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .proj-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .proj-icon { font-size: 32px; }
+    .proj-links { display: flex; gap: 12px; }
+    .proj-link {
+      color: var(--muted); text-decoration: none; font-size: 13px;
+      border: 1px solid var(--border); padding: 4px 12px; border-radius: 6px;
+      transition: all .2s;
+    }
+    .proj-link:hover { color: var(--accent); border-color: var(--accent); }
+    .proj-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px; font-weight: 600; margin-bottom: 10px;
+    }
+    .proj-desc { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; }
+    .proj-techs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .proj-tech {
+      font-size: 12px; padding: 3px 10px; border-radius: 4px;
+      background: rgba(79,142,247,0.1); color: var(--accent);
+      border: 1px solid rgba(79,142,247,0.2);
+    }
+
+    /* ── CONTATO ── */
+    .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contato-info p { color: var(--muted); line-height: 1.8; margin-bottom: 32px; }
+    .contato-links { display: flex; flex-direction: column; gap: 16px; }
+    .contato-link {
+      display: flex; align-items: center; gap: 14px;
+      color: var(--text); text-decoration: none;
+      padding: 16px 20px; border-radius: var(--radius);
+      border: 1px solid var(--border); background: var(--surface);
+      transition: all .2s; font-size: 14px;
+    }
+    .contato-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contato-link-icon { font-size: 20px; }
+    .contato-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; color: var(--muted); }
+    .form-group input, .form-group textarea {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 16px;
+      color: var(--text); font-size: 14px; font-family: 'Inter', sans-serif;
+      transition: border-color .2s; outline: none; resize: vertical;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { min-height: 120px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 40px 48px;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 13px;
+    }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      section { padding: 60px 20px; }
+      #projetos { padding: 60px 20px; }
+      .sobre-grid, .contato-grid { grid-template-columns: 1fr; gap: 40px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .proj-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── ANIMAÇÕES ── */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">LF.</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Disponível para estágio</p>
+  <h1 class="hero-name">Luis Fillipe<br/><span>Backer Faria</span></h1>
+  <p class="hero-desc">
+    Estudante de Sistemas de Informação apaixonado por tecnologia, 
+    banco de dados e desenvolvimento de software.
+  </p>
+  <div class="hero-btns">
+    <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+    <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <p class="section-label fade-in">Quem sou</p>
+  <h2 class="section-title fade-in">Sobre mim</h2>
+  <div class="sobre-grid">
+    <div class="sobre-text fade-in">
+      <p>Olá! Sou <strong>Luis Fillipe</strong>, estudante de Sistemas de Informação na <strong>UniLaSalle Rio de Janeiro</strong>. Tenho interesse em desenvolvimento de software, modelagem de banco de dados e resolução de problemas com código.</p>
+      <p>Estou em busca do meu <strong>primeiro estágio</strong> para aplicar na prática o que aprendo e crescer dentro de uma equipe de tecnologia.</p>
+      <div class="tags">
+        <span class="tag highlight">Aberto a estágio</span>
+        <span class="tag" style="background:#163a63;color:#7dd3fc;">Niterói, RJ</span>
+        <span class="tag" style="background:#163a63;color:#7dd3fc;">1º semestre</span>
+        <span class="tag" style="background:#163a63;color:#7dd3fc;">Presencial ou Remoto</span>
+      </div>
+    </div>
+    <div class="stats-grid fade-in">
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Projetos no GitHub</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Linguagens aprendidas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1º</div>
+        <div class="stat-label">Semestre em andamento</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Dedicação</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <p class="section-label fade-in">O que sei fazer</p>
+  <h2 class="section-title fade-in">Habilidades</h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">⚙️</div>
+      <div class="skill-name">Linguagem C</div>
+      <div class="skill-desc">Lógica de programação, structs, ponteiros, manipulação de arquivos e organização de código.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">SQL / MySQL</div>
+      <div class="skill-desc">Modelagem relacional, criação de tabelas, PKs, FKs, JOINs e consultas analíticas.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">HTML & CSS</div>
+      <div class="skill-desc">Estruturação e estilização de páginas web responsivas com boas práticas.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📐</div>
+      <div class="skill-name">Modelagem de BD</div>
+      <div class="skill-desc">Criação de diagramas ER conceituais e lógicos, identificação de entidades e relacionamentos.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🔧</div>
+      <div class="skill-name">Git & GitHub</div>
+      <div class="skill-desc">Versionamento de código, commits, repositórios e organização de projetos.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:50%"></div></div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">💡</div>
+      <div class="skill-name">Resolução de Problemas</div>
+      <div class="skill-desc">Lógica computacional, análise de requisitos e pensamento estruturado.</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<div id="projetos">
+  <p class="section-label fade-in">O que construí</p>
+  <h2 class="section-title fade-in">Projetos</h2>
+  <div class="proj-grid">
+    <div class="proj-card fade-in">
+      <div class="proj-header">
+        <div class="proj-icon">📚</div>
+        <div class="proj-links">
+          <a href="https://github.com/lfillipebf-ai/sistema-cadastro" target="_blank" class="proj-link">GitHub →</a>
+        </div>
+      </div>
+      <div class="proj-title">Sistema de Cadastro de Alunos</div>
+      <p class="proj-desc">Sistema de gerenciamento de alunos em linguagem C, com menu interativo no terminal. Permite cadastrar, listar, buscar e remover alunos, calculando médias e situação automaticamente. Dados persistidos em arquivo binário.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">C</span>
+        <span class="proj-tech">GCC</span>
+        <span class="proj-tech">Makefile</span>
+        <span class="proj-tech">Arquivos Binários</span>
+      </div>
+    </div>
+    <div class="proj-card fade-in">
+      <div class="proj-header">
+        <div class="proj-icon">🛒</div>
+        <div class="proj-links">
+          <a href="https://github.com/lfillipebf-ai/loja-sql" target="_blank" class="proj-link">GitHub →</a>
+        </div>
+      </div>
+      <div class="proj-title">Banco de Dados — Loja E-commerce</div>
+      <p class="proj-desc">Modelo relacional completo de uma loja virtual em MySQL. Inclui 7 tabelas com PKs e FKs, dados de exemplo e 10 consultas analíticas com JOINs, GROUP BY e funções de agregação.</p>
+      <div class="proj-techs">
+        <span class="proj-tech">SQL</span>
+        <span class="proj-tech">MySQL</span>
+        <span class="proj-tech">Modelagem Relacional</span>
+        <span class="proj-tech">JOINs</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTATO -->
+<section id="contato">
+  <p class="section-label fade-in">Vamos conversar</p>
+  <h2 class="section-title fade-in">Contato</h2>
+  <div class="contato-grid">
+    <div class="contato-info fade-in">
+      <p>Estou disponível para estágio e aberto a novas oportunidades. Se tiver interesse, pode me chamar por qualquer um dos canais abaixo!</p>
+      <div class="contato-links">
+        <a href="https://wa.me/5521971615757?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade!" target="_blank" class="contato-link">
+          <span class="contato-link-icon">🟢</span>
+          WhatsApp — (21) 97161-5757
+        </a>
+        <a href="mailto:lfillipebf@gmail.com" class="contato-link">
+          <span class="contato-link-icon">📧</span>
+          lfillipebf@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/luis-fillipe-backer-faria-bb8101303" target="_blank" class="contato-link">
+          <span class="contato-link-icon">🔗</span>
+          linkedin.com/in/luis-fillipe-backer-faria
+        </a>
+        <a href="https://github.com/lfillipebf-ai" target="_blank" class="contato-link">
+          <span class="contato-link-icon">⚫</span>
+          github.com/lfillipebf-ai
+        </a>
+      </div>
+    </div>
+    <div class="contato-form fade-in">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" placeholder="Seu nome"/>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="seu@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>Mensagem</label>
+        <textarea placeholder="Escreva sua mensagem..."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="enviarMensagem()">Enviar mensagem</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Desenvolvido por <strong>Luis Fillipe Backer Faria</strong> · 2025</p>
+</footer>
+
+<script>
+  // Animação de entrada ao rolar
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Botão de enviar mensagem
+  function enviarMensagem() {
+    const nome  = document.querySelector('input[type="text"]').value.trim();
+    const email = document.querySelector('input[type="email"]').value.trim();
+    const msg   = document.querySelector('textarea').value.trim();
+    if (!nome || !email || !msg) {
+      alert('Por favor, preencha todos os campos!');
+      return;
+    }
+    alert(`Obrigado, ${nome}! Em breve entrarei em contato.`);
+    document.querySelector('input[type="text"]').value  = '';
+    document.querySelector('input[type="email"]').value = '';
+    document.querySelector('textarea').value            = '';
+  }
+</script>
+</body>
+</html>
