@@ -1,6 +1,6 @@
 # 🌐 Portfólio Pessoal — Luis Fillipe Backer Faria
 
-Página de portfólio pessoal desenvolvida com HTML, CSS e JavaScript, apresentando minha trajetória, habilidades e projetos na área de Tecnologia da Informação.
+Página de portfólio pessoal desenvolvida com HTML, CSS e JavaScript, apresentando minha trajetória, habilidades e 22 projetos na área de Tecnologia da Informação.
 
 ## ✨ Funcionalidades
 
