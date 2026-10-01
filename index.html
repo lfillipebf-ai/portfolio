@@ -288,7 +288,7 @@
       <div class="tags">
         <span class="tag highlight">Aberto a estágio</span>
         <span class="tag" style="background:#163a63;color:#7dd3fc;">Niterói, RJ</span>
-        <span class="tag" style="background:#163a63;color:#7dd3fc;">1º semestre</span>
+        <span class="tag" style="background:#163a63;color:#7dd3fc;">3º período</span>
         <span class="tag" style="background:#163a63;color:#7dd3fc;">Presencial ou Remoto</span>
       </div>
     </div>
@@ -298,16 +298,16 @@
         <div class="stat-label">Projetos no GitHub</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Linguagens aprendidas</div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Áreas de tecnologia em estudo</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">1º</div>
-        <div class="stat-label">Semestre em andamento</div>
+        <div class="stat-num">3º</div>
+        <div class="stat-label">Período atual</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Dedicação</div>
+        <div class="stat-num">2026</div>
+        <div class="stat-label">Ano da graduação</div>
       </div>
     </div>
   </div>
@@ -366,7 +366,7 @@
       <div class="proj-header">
         <div class="proj-icon">📚</div>
         <div class="proj-links">
-          <a href="https://github.com/lfillipebf-ai/sistema-cadastro" target="_blank" class="proj-link">GitHub →</a>
+          <a href="https://github.com/lfillipebf-ai/Sistema-Cadastro-De-alunos" target="_blank" class="proj-link">GitHub →</a>
         </div>
       </div>
       <div class="proj-title">Sistema de Cadastro de Alunos</div>
@@ -382,7 +382,7 @@
       <div class="proj-header">
         <div class="proj-icon">🛒</div>
         <div class="proj-links">
-          <a href="https://github.com/lfillipebf-ai/loja-sql" target="_blank" class="proj-link">GitHub →</a>
+          <a href="https://github.com/lfillipebf-ai/Loja-SQL" target="_blank" class="proj-link">GitHub →</a>
         </div>
       </div>
       <div class="proj-title">Banco de Dados — Loja E-commerce</div>
@@ -393,6 +393,18 @@
         <span class="proj-tech">Modelagem Relacional</span>
         <span class="proj-tech">JOINs</span>
       </div>
+    </div>
+    <div class="proj-card fade-in">
+      <div class="proj-header"><div class="proj-icon">💼</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/sistema-gestao-vagas-" target="_blank" class="proj-link">GitHub →</a></div></div>
+      <div class="proj-title">Sistema de Gestão de Vagas</div>
+      <p class="proj-desc">Aplicação web com API REST, cadastro de vagas e candidatos, candidaturas, PostgreSQL e interface React.</p>
+      <div class="proj-techs"><span class="proj-tech">Java</span><span class="proj-tech">Spring Boot</span><span class="proj-tech">PostgreSQL</span><span class="proj-tech">React</span></div>
+    </div>
+    <div class="proj-card fade-in">
+      <div class="proj-header"><div class="proj-icon">🔐</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/sistema-login-api" target="_blank" class="proj-link">GitHub →</a></div></div>
+      <div class="proj-title">Sistema de Login API</div>
+      <p class="proj-desc">API de autenticação com Spring Security, JWT, BCrypt, usuários e controle de acesso por perfil.</p>
+      <div class="proj-techs"><span class="proj-tech">Java</span><span class="proj-tech">Spring Boot</span><span class="proj-tech">JWT</span><span class="proj-tech">PostgreSQL</span></div>
     </div>
   </div>
 </div>
@@ -443,7 +455,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>Desenvolvido por <strong>Luis Fillipe Backer Faria</strong> · 2025</p>
+  <p>Desenvolvido por <strong>Luis Fillipe Backer Faria</strong> · 2026</p>
 </footer>
 
 <script>
@@ -468,7 +480,8 @@
       alert('Por favor, preencha todos os campos!');
       return;
     }
-    alert(`Obrigado, ${nome}! Em breve entrarei em contato.`);
+    const texto = `Olá Luis, sou ${nome} (${email}). Vi seu portfólio e gostaria de conversar sobre uma oportunidade.\n\n${msg}`;
+    window.open('https://wa.me/5521971615757?text=' + encodeURIComponent(texto), '_blank');
     document.querySelector('input[type="text"]').value  = '';
     document.querySelector('input[type="email"]').value = '';
     document.querySelector('textarea').value            = '';
