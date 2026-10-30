@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Portfólio de Luis Fillipe Backer Faria, estudante de Sistemas de Informação com foco em Java, Spring Boot, APIs REST e bancos de dados. Em busca de estágio em tecnologia."/>
+  <meta name="theme-color" content="#0B0F1A"/>
   <title>Luis Fillipe — Portfólio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
@@ -13,6 +15,8 @@
       --accent2:#7B5CF0; --text:#E8EDF7; --muted:#7A8BA8; --radius:12px;
     }
     html { scroll-behavior:smooth; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
     body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:16px; line-height:1.6; min-height:100vh; }
     nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:18px 48px; background:rgba(11,15,26,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
     .nav-logo { font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
@@ -51,8 +55,7 @@
     .skill-icon { font-size:28px; margin-bottom:12px; }
     .skill-name { font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; margin-bottom:8px; }
     .skill-desc { font-size:13px; color:var(--muted); line-height:1.6; }
-    .skill-bar { margin-top:16px; height:4px; background:var(--border); border-radius:2px; }
-    .skill-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
+    .skill-status { display:inline-flex; margin-top:14px; padding:4px 9px; border:1px solid var(--border); border-radius:20px; color:var(--muted); font-size:11px; }
     #projetos { background:var(--surface); max-width:100%; padding:100px 48px; }
     #projetos > * { max-width:1100px; margin-left:auto; margin-right:auto; }
     .focus-note { color:var(--muted); max-width:760px; margin:-25px auto 40px; line-height:1.8; }
@@ -83,7 +86,7 @@
     .form-group textarea { min-height:120px; }
     footer { text-align:center; padding:40px 48px; border-top:1px solid var(--border); color:var(--muted); font-size:13px; }
     @media (max-width:768px) {
-      nav { padding:16px 20px; } .nav-links { display:none; } .hero { padding:100px 20px 60px; }
+      nav { padding:16px 20px; } .nav-links { display:flex; gap:16px; max-width:70%; overflow-x:auto; white-space:nowrap; scrollbar-width:none; } .nav-links::-webkit-scrollbar { display:none; } .nav-links a { font-size:12px; } .hero { padding:100px 20px 60px; }
       section { padding:60px 20px; } #projetos { padding:60px 20px; }
       .sobre-grid,.contato-grid { grid-template-columns:1fr; gap:40px; } .skills-grid { grid-template-columns:1fr 1fr; }
       .proj-grid { grid-template-columns:1fr; } .proj-card.featured { grid-column:span 1; }
@@ -119,10 +122,10 @@
       </div>
     </div>
     <div class="stats-grid fade-in">
-      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Projetos em destaque</div></div>
-      <div class="stat-card"><div class="stat-num">API</div><div class="stat-label">Principal área de foco</div></div>
-      <div class="stat-card"><div class="stat-num">SQL</div><div class="stat-label">Base de dados</div></div>
-      <div class="stat-card"><div class="stat-num">3º</div><div class="stat-label">Período atual</div></div>
+      <div class="stat-card"><div class="stat-num">Java</div><div class="stat-label">Linguagem de foco</div></div>
+      <div class="stat-card"><div class="stat-num">Spring</div><div class="stat-label">Backend e APIs</div></div>
+      <div class="stat-card"><div class="stat-num">SQL</div><div class="stat-label">Bancos relacionais</div></div>
+      <div class="stat-card"><div class="stat-num">3º</div><div class="stat-label">Período da graduação</div></div>
     </div>
   </div>
 </section>
@@ -131,11 +134,11 @@
   <p class="section-label fade-in">Onde estou focando</p>
   <h2 class="section-title fade-in">Habilidades</h2>
   <div class="skills-grid">
-    <div class="skill-card fade-in"><div class="skill-icon">☕</div><div class="skill-name">Java</div><div class="skill-desc">Programação orientada a objetos e desenvolvimento de aplicações e APIs.</div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">⚙️</div><div class="skill-name">Spring Boot</div><div class="skill-desc">Construção de APIs REST e aplicações backend com Spring.</div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🗄️</div><div class="skill-name">SQL / Bancos de dados</div><div class="skill-desc">Modelagem relacional, PKs, FKs, JOINs, consultas e persistência de dados.</div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🔗</div><div class="skill-name">APIs REST</div><div class="skill-desc">Criação e organização de endpoints para operações de sistemas e dados.</div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🌐</div><div class="skill-name">Desenvolvimento Web</div><div class="skill-desc">HTML, CSS e contato com interfaces web e integração com APIs.</div><div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div></div>
+    <div class="skill-card fade-in"><div class="skill-icon">☕</div><div class="skill-name">Java</div><div class="skill-desc">Programação orientada a objetos e desenvolvimento de aplicações e APIs.</div><span class="skill-status">Em desenvolvimento</span></div>
+    <div class="skill-card fade-in"><div class="skill-icon">⚙️</div><div class="skill-name">Spring Boot</div><div class="skill-desc">Construção de APIs REST e aplicações backend com Spring.</div><span class="skill-status">Em desenvolvimento</span></div>
+    <div class="skill-card fade-in"><div class="skill-icon">🗄️</div><div class="skill-name">SQL / Bancos de dados</div><div class="skill-desc">Modelagem relacional, PKs, FKs, JOINs, consultas e persistência de dados.</div><span class="skill-status">Em desenvolvimento</span></div>
+    <div class="skill-card fade-in"><div class="skill-icon">🔗</div><div class="skill-name">APIs REST</div><div class="skill-desc">Criação e organização de endpoints para operações de sistemas e dados.</div><span class="skill-status">Em desenvolvimento</span></div>
+    <div class="skill-card fade-in"><div class="skill-icon">🌐</div><div class="skill-name">Desenvolvimento Web</div><div class="skill-desc">HTML, CSS e contato com interfaces web e integração com APIs.</div><span class="skill-status">Conhecimentos aplicados</span></div>
     <div class="skill-card fade-in"><div class="skill-icon">🔧</div><div class="skill-name">Git & GitHub</div><div class="skill-desc">Versionamento, organização de repositórios e publicação de projetos.</div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
   </div>
 </section>
@@ -146,19 +149,19 @@
   <p class="focus-note fade-in">Em vez de listar todos os repositórios, selecionei projetos que representam melhor meu foco atual e diferentes habilidades: desenvolvimento backend, segurança de APIs e bancos de dados.</p>
   <div class="proj-grid">
     <div class="proj-card featured fade-in">
-      <div class="proj-header"><div class="proj-icon">💼</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/sistema-gestao-vagas-" target="_blank" class="proj-link">GitHub →</a></div></div>
+      <div class="proj-header"><div class="proj-icon">💼</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/sistema-gestao-vagas-" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div></div>
       <div class="proj-title">Sistema de Gestão de Vagas</div>
       <p class="proj-desc">Sistema web para gerenciamento de vagas e candidaturas. O projeto reúne backend com API REST, persistência em banco relacional e uma interface web, permitindo praticar integração entre diferentes camadas de uma aplicação.</p>
       <div class="proj-techs"><span class="proj-tech">Java</span><span class="proj-tech">Spring Boot</span><span class="proj-tech">Spring Data JPA</span><span class="proj-tech">PostgreSQL</span><span class="proj-tech">React</span><span class="proj-tech">Docker</span></div>
     </div>
     <div class="proj-card fade-in">
-      <div class="proj-header"><div class="proj-icon">🔐</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/sistema-login-api" target="_blank" class="proj-link">GitHub →</a></div></div>
+      <div class="proj-header"><div class="proj-icon">🔐</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/sistema-login-api" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div></div>
       <div class="proj-title">Sistema de Login API</div>
-      <p class="proj-desc">API voltada à autenticação e controle de acesso. O projeto mostra contato com conceitos de segurança de aplicações, tokens JWT, criptografia de senhas e perfis de usuário.</p>
+      <p class="proj-desc">API voltada à autenticação e controle de acesso. O projeto mostra contato com conceitos de segurança de aplicações, tokens JWT, hash de senhas com BCrypt e perfis de usuário.</p>
       <div class="proj-techs"><span class="proj-tech">Java</span><span class="proj-tech">Spring Boot</span><span class="proj-tech">Spring Security</span><span class="proj-tech">JWT</span><span class="proj-tech">BCrypt</span><span class="proj-tech">PostgreSQL</span></div>
     </div>
     <div class="proj-card fade-in">
-      <div class="proj-header"><div class="proj-icon">🛒</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/Loja-SQL" target="_blank" class="proj-link">GitHub →</a></div></div>
+      <div class="proj-header"><div class="proj-icon">🛒</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/Loja-SQL" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div></div>
       <div class="proj-title">Banco de Dados — Loja E-commerce</div>
       <p class="proj-desc">Projeto de banco de dados relacional em MySQL, com tabelas relacionadas, chaves primárias e estrangeiras e consultas utilizando JOINs, GROUP BY e funções de agregação.</p>
       <div class="proj-techs"><span class="proj-tech">SQL</span><span class="proj-tech">MySQL</span><span class="proj-tech">Modelagem Relacional</span><span class="proj-tech">JOINs</span></div>
@@ -173,17 +176,18 @@
     <div class="contato-info fade-in">
       <p>Estou disponível para estágio e aberto a oportunidades em tecnologia, principalmente em desenvolvimento de software e backend.</p>
       <div class="contato-links">
-        <a href="https://wa.me/5521971615757?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade!" target="_blank" class="contato-link"><span class="contato-link-icon">🟢</span>WhatsApp — (21) 97161-5757</a>
+        <a href="https://wa.me/5521971615757?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade!" target="_blank" rel="noopener noreferrer" class="contato-link"><span class="contato-link-icon">🟢</span>WhatsApp — (21) 97161-5757</a>
         <a href="mailto:lfillipebf@gmail.com" class="contato-link"><span class="contato-link-icon">📧</span>lfillipebf@gmail.com</a>
-        <a href="https://www.linkedin.com/in/luis-fillipe-backer-faria-bb8101303" target="_blank" class="contato-link"><span class="contato-link-icon">🔗</span>linkedin.com/in/luis-fillipe-backer-faria</a>
-        <a href="https://github.com/lfillipebf-ai" target="_blank" class="contato-link"><span class="contato-link-icon">⚫</span>github.com/lfillipebf-ai</a>
+        <a href="https://www.linkedin.com/in/luis-fillipe-backer-faria-bb8101303" target="_blank" rel="noopener noreferrer" class="contato-link"><span class="contato-link-icon">🔗</span>linkedin.com/in/luis-fillipe-backer-faria</a>
+        <a href="https://github.com/lfillipebf-ai" target="_blank" rel="noopener noreferrer" class="contato-link"><span class="contato-link-icon">⚫</span>github.com/lfillipebf-ai</a>
       </div>
     </div>
     <div class="contato-form fade-in">
-      <div class="form-group"><label>Nome</label><input type="text" placeholder="Seu nome"/></div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="seu@email.com"/></div>
-      <div class="form-group"><label>Mensagem</label><textarea placeholder="Escreva sua mensagem..."></textarea></div>
-      <button class="btn btn-primary" onclick="enviarMensagem()">Enviar mensagem</button>
+      <p class="skill-desc">Preencha os campos. A mensagem será preparada para envio pelo WhatsApp; este formulário não envia e-mail diretamente.</p>
+      <div class="form-group"><label for="contato-nome">Nome</label><input id="contato-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required/></div>
+      <div class="form-group"><label for="contato-email">E-mail</label><input id="contato-email" name="email" type="email" autocomplete="email" placeholder="seu@email.com" required/></div>
+      <div class="form-group"><label for="contato-mensagem">Mensagem</label><textarea id="contato-mensagem" name="mensagem" placeholder="Escreva sua mensagem..." required></textarea></div>
+      <button type="button" class="btn btn-primary" onclick="enviarMensagem()">Continuar pelo WhatsApp</button>
     </div>
   </div>
 </section>
@@ -193,13 +197,13 @@
   const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold:0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   function enviarMensagem() {
-    const nome=document.querySelector('input[type="text"]').value.trim();
-    const email=document.querySelector('input[type="email"]').value.trim();
-    const msg=document.querySelector('textarea').value.trim();
+    const nome=document.getElementById('contato-nome').value.trim();
+    const email=document.getElementById('contato-email').value.trim();
+    const msg=document.getElementById('contato-mensagem').value.trim();
     if (!nome || !email || !msg) { alert('Por favor, preencha todos os campos!'); return; }
     const texto=`Olá Luis, sou ${nome} (${email}). Vi seu portfólio e gostaria de conversar sobre uma oportunidade.\n\n${msg}`;
-    window.open('https://wa.me/5521971615757?text='+encodeURIComponent(texto),'_blank');
-    document.querySelector('input[type="text"]').value=''; document.querySelector('input[type="email"]').value=''; document.querySelector('textarea').value='';
+    window.open('https://wa.me/5521971615757?text='+encodeURIComponent(texto),'_blank','noopener,noreferrer');
+    document.getElementById('contato-nome').value=''; document.getElementById('contato-email').value=''; document.getElementById('contato-mensagem').value='';
   }
 </script>
 </body>
