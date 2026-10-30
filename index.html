@@ -86,7 +86,7 @@
     .form-group textarea { min-height:120px; }
     footer { text-align:center; padding:40px 48px; border-top:1px solid var(--border); color:var(--muted); font-size:13px; }
     @media (max-width:768px) {
-      nav { padding:16px 20px; } .nav-links { display:flex; gap:16px; max-width:70%; overflow-x:auto; white-space:nowrap; scrollbar-width:none; } .nav-links::-webkit-scrollbar { display:none; } .nav-links a { font-size:12px; } .hero { padding:100px 20px 60px; }
+      nav { padding:16px 20px; } .nav-links { display:flex; gap:16px; max-width:calc(100% - 56px); overflow-x:auto; white-space:nowrap; scrollbar-width:none; } .nav-links::-webkit-scrollbar { display:none; } .nav-links a { font-size:12px; } .hero { padding:100px 20px 60px; }
       section { padding:60px 20px; } #projetos { padding:60px 20px; }
       .sobre-grid,.contato-grid { grid-template-columns:1fr; gap:40px; } .skills-grid { grid-template-columns:1fr 1fr; }
       .proj-grid { grid-template-columns:1fr; } .proj-card.featured { grid-column:span 1; }
@@ -139,7 +139,7 @@
     <div class="skill-card fade-in"><div class="skill-icon">🗄️</div><div class="skill-name">SQL / Bancos de dados</div><div class="skill-desc">Modelagem relacional, PKs, FKs, JOINs, consultas e persistência de dados.</div><span class="skill-status">Em desenvolvimento</span></div>
     <div class="skill-card fade-in"><div class="skill-icon">🔗</div><div class="skill-name">APIs REST</div><div class="skill-desc">Criação e organização de endpoints para operações de sistemas e dados.</div><span class="skill-status">Em desenvolvimento</span></div>
     <div class="skill-card fade-in"><div class="skill-icon">🌐</div><div class="skill-name">Desenvolvimento Web</div><div class="skill-desc">HTML, CSS e contato com interfaces web e integração com APIs.</div><span class="skill-status">Conhecimentos aplicados</span></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🔧</div><div class="skill-name">Git & GitHub</div><div class="skill-desc">Versionamento, organização de repositórios e publicação de projetos.</div><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></div>
+    <div class="skill-card fade-in"><div class="skill-icon">🔧</div><div class="skill-name">Git & GitHub</div><div class="skill-desc">Versionamento, organização de repositórios e publicação de projetos.</div><span class="skill-status">Em desenvolvimento</span></div>
   </div>
 </section>
 
@@ -201,9 +201,9 @@
     const email=document.getElementById('contato-email').value.trim();
     const msg=document.getElementById('contato-mensagem').value.trim();
     if (!nome || !email || !msg) { alert('Por favor, preencha todos os campos!'); return; }
+    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) { alert('Informe um e-mail válido.'); return; }
     const texto=`Olá Luis, sou ${nome} (${email}). Vi seu portfólio e gostaria de conversar sobre uma oportunidade.\n\n${msg}`;
     window.open('https://wa.me/5521971615757?text='+encodeURIComponent(texto),'_blank','noopener,noreferrer');
-    document.getElementById('contato-nome').value=''; document.getElementById('contato-email').value=''; document.getElementById('contato-mensagem').value='';
   }
 </script>
 </body>
