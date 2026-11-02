@@ -1,210 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Portfólio de Luis Fillipe Backer Faria, estudante de Sistemas de Informação com foco em Java, Spring Boot, APIs REST e bancos de dados. Em busca de estágio em tecnologia."/>
-  <meta name="theme-color" content="#0B0F1A"/>
-  <title>Luis Fillipe — Portfólio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:#0B0F1A; --surface:#131929; --border:#1E2740; --accent:#4F8EF7;
-      --accent2:#7B5CF0; --text:#E8EDF7; --muted:#7A8BA8; --radius:12px;
-    }
-    html { scroll-behavior:smooth; }
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
-    body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-size:16px; line-height:1.6; min-height:100vh; }
-    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:18px 48px; background:rgba(11,15,26,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
-    .nav-logo { font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .nav-links { display:flex; gap:32px; list-style:none; }
-    .nav-links a { color:var(--muted); text-decoration:none; font-size:14px; transition:color .2s; }
-    .nav-links a:hover { color:var(--text); }
-    .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:120px 48px 80px; position:relative; overflow:hidden; }
-    .hero::before { content:''; position:absolute; top:-200px; right:-200px; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(79,142,247,.12) 0%,transparent 70%); pointer-events:none; }
-    .hero::after { content:''; position:absolute; bottom:-100px; left:30%; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(123,92,240,.10) 0%,transparent 70%); pointer-events:none; }
-    .hero-eyebrow { font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:20px; font-weight:500; }
-    .hero-name { font-family:'Space Grotesk',sans-serif; font-size:clamp(42px,7vw,80px); font-weight:700; line-height:1.05; margin-bottom:24px; }
-    .hero-name span { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .hero-desc { font-size:18px; color:var(--muted); max-width:600px; margin-bottom:40px; line-height:1.7; }
-    .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
-    .btn { padding:12px 28px; border-radius:8px; font-size:14px; font-weight:500; text-decoration:none; transition:all .2s; cursor:pointer; border:none; }
-    .btn-primary { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; }
-    .btn-primary:hover { opacity:.85; transform:translateY(-1px); }
-    .btn-ghost { border:1px solid var(--border); color:var(--text); background:transparent; }
-    .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
-    section { padding:100px 48px; max-width:1100px; margin:0 auto; }
-    .section-label { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:12px; font-weight:500; }
-    .section-title { font-family:'Space Grotesk',sans-serif; font-size:clamp(28px,4vw,42px); font-weight:700; margin-bottom:48px; line-height:1.2; }
-    .sobre-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-    .sobre-text p { color:var(--muted); line-height:1.8; margin-bottom:16px; }
-    .sobre-text p strong { color:var(--text); }
-    .tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
-    .tag { padding:6px 14px; border-radius:20px; border:1px solid var(--border); font-size:13px; color:var(--muted); background:var(--surface); }
-    .tag.highlight { border-color:var(--accent); color:var(--accent); }
-    .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-    .stat-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; text-align:center; }
-    .stat-num { font-family:'Space Grotesk',sans-serif; font-size:36px; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .stat-label { font-size:13px; color:var(--muted); margin-top:4px; }
-    .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .skill-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; transition:border-color .2s,transform .2s; }
-    .skill-card:hover { border-color:var(--accent); transform:translateY(-3px); }
-    .skill-icon { font-size:28px; margin-bottom:12px; }
-    .skill-name { font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; margin-bottom:8px; }
-    .skill-desc { font-size:13px; color:var(--muted); line-height:1.6; }
-    .skill-status { display:inline-flex; margin-top:14px; padding:4px 9px; border:1px solid var(--border); border-radius:20px; color:var(--muted); font-size:11px; }
-    #projetos { background:var(--surface); max-width:100%; padding:100px 48px; }
-    #projetos > * { max-width:1100px; margin-left:auto; margin-right:auto; }
-    .focus-note { color:var(--muted); max-width:760px; margin:-25px auto 40px; line-height:1.8; }
-    .proj-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:1100px; margin:0 auto; }
-    .proj-card { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:32px; transition:border-color .2s,transform .2s; display:flex; flex-direction:column; }
-    .proj-card.featured { grid-column:span 2; }
-    .proj-card:hover { border-color:var(--accent); transform:translateY(-4px); }
-    .proj-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; }
-    .proj-icon { font-size:32px; }
-    .proj-links { display:flex; gap:12px; }
-    .proj-link { color:var(--muted); text-decoration:none; font-size:13px; border:1px solid var(--border); padding:4px 12px; border-radius:6px; transition:all .2s; }
-    .proj-link:hover { color:var(--accent); border-color:var(--accent); }
-    .proj-title { font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:600; margin-bottom:10px; }
-    .proj-desc { font-size:14px; color:var(--muted); line-height:1.7; flex:1; }
-    .proj-techs { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
-    .proj-tech { font-size:12px; padding:3px 10px; border-radius:4px; background:rgba(79,142,247,.1); color:var(--accent); border:1px solid rgba(79,142,247,.2); }
-    .contato-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
-    .contato-info p { color:var(--muted); line-height:1.8; margin-bottom:32px; }
-    .contato-links { display:flex; flex-direction:column; gap:16px; }
-    .contato-link { display:flex; align-items:center; gap:14px; color:var(--text); text-decoration:none; padding:16px 20px; border-radius:var(--radius); border:1px solid var(--border); background:var(--surface); transition:all .2s; font-size:14px; }
-    .contato-link:hover { border-color:var(--accent); color:var(--accent); }
-    .contato-link-icon { font-size:20px; }
-    .contato-form { display:flex; flex-direction:column; gap:16px; }
-    .form-group { display:flex; flex-direction:column; gap:6px; }
-    .form-group label { font-size:13px; color:var(--muted); }
-    .form-group input,.form-group textarea { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px; color:var(--text); font-size:14px; font-family:'Inter',sans-serif; transition:border-color .2s; outline:none; resize:vertical; }
-    .form-group input:focus,.form-group textarea:focus { border-color:var(--accent); }
-    .form-group textarea { min-height:120px; }
-    footer { text-align:center; padding:40px 48px; border-top:1px solid var(--border); color:var(--muted); font-size:13px; }
-    @media (max-width:768px) {
-      nav { padding:16px 20px; } .nav-links { display:flex; gap:16px; max-width:calc(100% - 56px); overflow-x:auto; white-space:nowrap; scrollbar-width:none; } .nav-links::-webkit-scrollbar { display:none; } .nav-links a { font-size:12px; } .hero { padding:100px 20px 60px; }
-      section { padding:60px 20px; } #projetos { padding:60px 20px; }
-      .sobre-grid,.contato-grid { grid-template-columns:1fr; gap:40px; } .skills-grid { grid-template-columns:1fr 1fr; }
-      .proj-grid { grid-template-columns:1fr; } .proj-card.featured { grid-column:span 1; }
-    }
-    .fade-in { opacity:0; transform:translateY(20px); transition:opacity .6s ease,transform .6s ease; }
-    .fade-in.visible { opacity:1; transform:translateY(0); }
-  </style>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Portfólio de Luis Fillipe Backer Faria, estudante de Sistemas de Informação com foco em Python, SQL, análise de dados, automação e APIs. Em busca de estágio em TI."/>
+<meta name="theme-color" content="#0B0F1A"/><title>Luis Fillipe — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#0B0F1A;--surface:#131929;--border:#1E2740;--accent:#4F8EF7;--accent2:#7B5CF0;--text:#E8EDF7;--muted:#7A8BA8;--radius:12px}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-size:16px;line-height:1.6;min-height:100vh}a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(11,15,26,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav-links{display:flex;gap:32px;list-style:none}.nav-links a{color:var(--muted);text-decoration:none;font-size:14px}.nav-links a:hover{color:var(--text)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:120px 48px 80px;position:relative;overflow:hidden}.hero:before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(79,142,247,.12),transparent 70%);pointer-events:none}.hero:after{content:'';position:absolute;bottom:-100px;left:30%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(123,92,240,.1),transparent 70%);pointer-events:none}.hero-eyebrow{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-weight:500}.hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(42px,7vw,80px);font-weight:700;line-height:1.05;margin-bottom:24px}.hero-name span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-desc{font-size:18px;color:var(--muted);max-width:680px;margin-bottom:40px;line-height:1.7}.hero-btns{display:flex;gap:16px;flex-wrap:wrap}.btn{padding:12px 28px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s;cursor:pointer;border:none}.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}.btn-primary:hover{opacity:.85;transform:translateY(-1px)}.btn-ghost{border:1px solid var(--border);color:var(--text);background:transparent}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+section{padding:100px 48px;max-width:1100px;margin:0 auto}.section-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:500}.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:48px;line-height:1.2}.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.sobre-text p{color:var(--muted);line-height:1.8;margin-bottom:16px}.sobre-text p strong{color:var(--text)}.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.tag{padding:6px 14px;border-radius:20px;border:1px solid var(--border);font-size:13px;color:var(--muted);background:var(--surface)}.tag.highlight{border-color:var(--accent);color:var(--accent)}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}.stat-num{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}.stat-label{font-size:13px;color:var(--muted);margin-top:4px}.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:border-color .2s,transform .2s}.skill-card:hover{border-color:var(--accent);transform:translateY(-3px)}.skill-icon{font-size:28px;margin-bottom:12px}.skill-name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;margin-bottom:8px}.skill-desc{font-size:13px;color:var(--muted);line-height:1.6}.skill-status{display:inline-flex;margin-top:14px;padding:4px 9px;border:1px solid var(--border);border-radius:20px;color:var(--muted);font-size:11px}
+#projetos{background:var(--surface);max-width:100%;padding:100px 48px}#projetos>*{max-width:1100px;margin-left:auto;margin-right:auto}.focus-note{color:var(--muted);max-width:780px;margin:-25px auto 40px;line-height:1.8}.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1100px;margin:0 auto}.proj-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .2s,transform .2s;display:flex;flex-direction:column}.proj-card.featured{grid-column:span 2}.proj-card:hover{border-color:var(--accent);transform:translateY(-4px)}.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}.proj-icon{font-size:32px}.proj-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.proj-link{color:var(--muted);text-decoration:none;font-size:13px;border:1px solid var(--border);padding:4px 12px;border-radius:6px}.proj-link:hover{color:var(--accent);border-color:var(--accent)}.proj-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;margin-bottom:10px}.proj-desc{font-size:14px;color:var(--muted);line-height:1.7;flex:1}.proj-techs{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.proj-tech{font-size:12px;padding:3px 10px;border-radius:4px;background:rgba(79,142,247,.1);color:var(--accent);border:1px solid rgba(79,142,247,.2)}.proj-badge{display:inline-block;font-size:11px;padding:4px 9px;border-radius:20px;border:1px solid var(--border);color:var(--muted);margin-bottom:12px;width:max-content}.proj-badge.focus{border-color:var(--accent);color:var(--accent)}
+.contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.contato-info p{color:var(--muted);line-height:1.8;margin-bottom:32px}.contato-links{display:flex;flex-direction:column;gap:16px}.contato-link{display:flex;align-items:center;gap:14px;color:var(--text);text-decoration:none;padding:16px 20px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);font-size:14px}.contato-link:hover{border-color:var(--accent);color:var(--accent)}.contato-link-icon{font-size:20px}.contato-form{display:flex;flex-direction:column;gap:16px}.form-group{display:flex;flex-direction:column;gap:6px}.form-group label{font-size:13px;color:var(--muted)}.form-group input,.form-group textarea{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-size:14px;font-family:Inter,sans-serif;outline:none;resize:vertical}.form-group input:focus,.form-group textarea:focus{border-color:var(--accent)}.form-group textarea{min-height:120px}.form-help{font-size:12px;color:var(--muted);margin-top:-8px}footer{text-align:center;padding:40px 48px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+@media(max-width:768px){nav{padding:16px 20px}.nav-links{gap:16px;max-width:calc(100% - 56px);overflow-x:auto;white-space:nowrap;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}.nav-links a{font-size:12px}.hero{padding:100px 20px 60px}section{padding:60px 20px}#projetos{padding:60px 20px}.sobre-grid,.contato-grid{grid-template-columns:1fr;gap:40px}.skills-grid{grid-template-columns:1fr 1fr}.proj-grid{grid-template-columns:1fr}.proj-card.featured{grid-column:span 1}.proj-header{gap:12px}.proj-links{justify-content:flex-start}}@media(max-width:480px){.skills-grid{grid-template-columns:1fr}.hero-desc{font-size:16px}.stat-num{font-size:27px}}.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.fade-in.visible{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
-<nav>
-  <div class="nav-logo">LF.</div>
-  <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li><li><a href="#habilidades">Habilidades</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#contato">Contato</a></li>
-  </ul>
-</nav>
-
-<div class="hero">
-  <p class="hero-eyebrow">Disponível para estágio</p>
-  <h1 class="hero-name">Luis Fillipe<br/><span>Backer Faria</span></h1>
-  <p class="hero-desc">Estudante de Sistemas de Informação com foco em <strong>desenvolvimento de software, APIs e bancos de dados</strong>.</p>
-  <div class="hero-btns"><a href="#projetos" class="btn btn-primary">Ver projetos</a><a href="#contato" class="btn btn-ghost">Entrar em contato</a></div>
-</div>
-
-<section id="sobre">
-  <p class="section-label fade-in">Quem sou</p>
-  <h2 class="section-title fade-in">Sobre mim</h2>
-  <div class="sobre-grid">
-    <div class="sobre-text fade-in">
-      <p>Olá! Sou <strong>Luis Fillipe</strong>, estudante de Sistemas de Informação na <strong>UniLaSalle Rio de Janeiro</strong>. Meu principal interesse é o desenvolvimento de software, especialmente a construção de APIs e sistemas conectados a bancos de dados.</p>
-      <p>Tenho desenvolvido projetos acadêmicos e de portfólio para praticar <strong>Java, Spring Boot, SQL, bancos relacionais e desenvolvimento web</strong>. Estou em busca do meu primeiro estágio para transformar esse conhecimento em experiência profissional e evoluir dentro de uma equipe de tecnologia.</p>
-      <div class="tags">
-        <span class="tag highlight">Aberto a estágio</span><span class="tag">Niterói, RJ</span><span class="tag">3º período</span><span class="tag">Presencial ou remoto</span>
-      </div>
-    </div>
-    <div class="stats-grid fade-in">
-      <div class="stat-card"><div class="stat-num">Java</div><div class="stat-label">Linguagem de foco</div></div>
-      <div class="stat-card"><div class="stat-num">Spring</div><div class="stat-label">Backend e APIs</div></div>
-      <div class="stat-card"><div class="stat-num">SQL</div><div class="stat-label">Bancos relacionais</div></div>
-      <div class="stat-card"><div class="stat-num">3º</div><div class="stat-label">Período da graduação</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="habilidades">
-  <p class="section-label fade-in">Onde estou focando</p>
-  <h2 class="section-title fade-in">Habilidades</h2>
-  <div class="skills-grid">
-    <div class="skill-card fade-in"><div class="skill-icon">☕</div><div class="skill-name">Java</div><div class="skill-desc">Programação orientada a objetos e desenvolvimento de aplicações e APIs.</div><span class="skill-status">Em desenvolvimento</span></div>
-    <div class="skill-card fade-in"><div class="skill-icon">⚙️</div><div class="skill-name">Spring Boot</div><div class="skill-desc">Construção de APIs REST e aplicações backend com Spring.</div><span class="skill-status">Em desenvolvimento</span></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🗄️</div><div class="skill-name">SQL / Bancos de dados</div><div class="skill-desc">Modelagem relacional, PKs, FKs, JOINs, consultas e persistência de dados.</div><span class="skill-status">Em desenvolvimento</span></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🔗</div><div class="skill-name">APIs REST</div><div class="skill-desc">Criação e organização de endpoints para operações de sistemas e dados.</div><span class="skill-status">Em desenvolvimento</span></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🌐</div><div class="skill-name">Desenvolvimento Web</div><div class="skill-desc">HTML, CSS e contato com interfaces web e integração com APIs.</div><span class="skill-status">Conhecimentos aplicados</span></div>
-    <div class="skill-card fade-in"><div class="skill-icon">🔧</div><div class="skill-name">Git & GitHub</div><div class="skill-desc">Versionamento, organização de repositórios e publicação de projetos.</div><span class="skill-status">Em desenvolvimento</span></div>
-  </div>
-</section>
-
-<div id="projetos">
-  <p class="section-label fade-in">O que construí</p>
-  <h2 class="section-title fade-in">Projetos em destaque</h2>
-  <p class="focus-note fade-in">Em vez de listar todos os repositórios, selecionei projetos que representam melhor meu foco atual e diferentes habilidades: desenvolvimento backend, segurança de APIs e bancos de dados.</p>
-  <div class="proj-grid">
-    <div class="proj-card featured fade-in">
-      <div class="proj-header"><div class="proj-icon">💼</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/sistema-gestao-vagas-" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div></div>
-      <div class="proj-title">Sistema de Gestão de Vagas</div>
-      <p class="proj-desc">Sistema web para gerenciamento de vagas e candidaturas. O projeto reúne backend com API REST, persistência em banco relacional e uma interface web, permitindo praticar integração entre diferentes camadas de uma aplicação.</p>
-      <div class="proj-techs"><span class="proj-tech">Java</span><span class="proj-tech">Spring Boot</span><span class="proj-tech">Spring Data JPA</span><span class="proj-tech">PostgreSQL</span><span class="proj-tech">React</span><span class="proj-tech">Docker</span></div>
-    </div>
-    <div class="proj-card fade-in">
-      <div class="proj-header"><div class="proj-icon">🔐</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/sistema-login-api" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div></div>
-      <div class="proj-title">Sistema de Login API</div>
-      <p class="proj-desc">API voltada à autenticação e controle de acesso. O projeto mostra contato com conceitos de segurança de aplicações, tokens JWT, hash de senhas com BCrypt e perfis de usuário.</p>
-      <div class="proj-techs"><span class="proj-tech">Java</span><span class="proj-tech">Spring Boot</span><span class="proj-tech">Spring Security</span><span class="proj-tech">JWT</span><span class="proj-tech">BCrypt</span><span class="proj-tech">PostgreSQL</span></div>
-    </div>
-    <div class="proj-card fade-in">
-      <div class="proj-header"><div class="proj-icon">🛒</div><div class="proj-links"><a href="https://github.com/lfillipebf-ai/Loja-SQL" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div></div>
-      <div class="proj-title">Banco de Dados — Loja E-commerce</div>
-      <p class="proj-desc">Projeto de banco de dados relacional em MySQL, com tabelas relacionadas, chaves primárias e estrangeiras e consultas utilizando JOINs, GROUP BY e funções de agregação.</p>
-      <div class="proj-techs"><span class="proj-tech">SQL</span><span class="proj-tech">MySQL</span><span class="proj-tech">Modelagem Relacional</span><span class="proj-tech">JOINs</span></div>
-    </div>
-  </div>
-</div>
-
-<section id="contato">
-  <p class="section-label fade-in">Vamos conversar</p>
-  <h2 class="section-title fade-in">Contato</h2>
-  <div class="contato-grid">
-    <div class="contato-info fade-in">
-      <p>Estou disponível para estágio e aberto a oportunidades em tecnologia, principalmente em desenvolvimento de software e backend.</p>
-      <div class="contato-links">
-        <a href="https://wa.me/5521971615757?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade!" target="_blank" rel="noopener noreferrer" class="contato-link"><span class="contato-link-icon">🟢</span>WhatsApp — (21) 97161-5757</a>
-        <a href="mailto:lfillipebf@gmail.com" class="contato-link"><span class="contato-link-icon">📧</span>lfillipebf@gmail.com</a>
-        <a href="https://www.linkedin.com/in/luis-fillipe-backer-faria-bb8101303" target="_blank" rel="noopener noreferrer" class="contato-link"><span class="contato-link-icon">🔗</span>linkedin.com/in/luis-fillipe-backer-faria</a>
-        <a href="https://github.com/lfillipebf-ai" target="_blank" rel="noopener noreferrer" class="contato-link"><span class="contato-link-icon">⚫</span>github.com/lfillipebf-ai</a>
-      </div>
-    </div>
-    <div class="contato-form fade-in">
-      <p class="skill-desc">Preencha os campos. A mensagem será preparada para envio pelo WhatsApp; este formulário não envia e-mail diretamente.</p>
-      <div class="form-group"><label for="contato-nome">Nome</label><input id="contato-nome" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required/></div>
-      <div class="form-group"><label for="contato-email">E-mail</label><input id="contato-email" name="email" type="email" autocomplete="email" placeholder="seu@email.com" required/></div>
-      <div class="form-group"><label for="contato-mensagem">Mensagem</label><textarea id="contato-mensagem" name="mensagem" placeholder="Escreva sua mensagem..." required></textarea></div>
-      <button type="button" class="btn btn-primary" onclick="enviarMensagem()">Continuar pelo WhatsApp</button>
-    </div>
-  </div>
-</section>
-
-<footer><p>Desenvolvido por <strong>Luis Fillipe Backer Faria</strong> · 2026</p></footer>
-<script>
-  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold:0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  function enviarMensagem() {
-    const nome=document.getElementById('contato-nome').value.trim();
-    const email=document.getElementById('contato-email').value.trim();
-    const msg=document.getElementById('contato-mensagem').value.trim();
-    if (!nome || !email || !msg) { alert('Por favor, preencha todos os campos!'); return; }
-    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) { alert('Informe um e-mail válido.'); return; }
-    const texto=`Olá Luis, sou ${nome} (${email}). Vi seu portfólio e gostaria de conversar sobre uma oportunidade.\n\n${msg}`;
-    window.open('https://wa.me/5521971615757?text='+encodeURIComponent(texto),'_blank','noopener,noreferrer');
-  }
-</script>
-</body>
-</html>
+<nav><div class="nav-logo">LF.</div><ul class="nav-links"><li><a href="#sobre">Sobre</a></li><li><a href="#habilidades">Habilidades</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#contato">Contato</a></li></ul></nav>
+<div class="hero"><p class="hero-eyebrow">Disponível para estágio</p><h1 class="hero-name">Luis Fillipe<br/><span>Backer Faria</span></h1><p class="hero-desc">Estudante de Sistemas de Informação com foco em <strong>Python, SQL, análise de dados, automação e desenvolvimento de APIs</strong>.</p><div class="hero-btns"><a href="#projetos" class="btn btn-primary">Ver projetos</a><a href="#contato" class="btn btn-ghost">Entrar em contato</a></div></div>
+<section id="sobre"><p class="section-label fade-in">Quem sou</p><h2 class="section-title fade-in">Sobre mim</h2><div class="sobre-grid"><div class="sobre-text fade-in"><p>Olá! Sou <strong>Luis Fillipe</strong>, estudante de Sistemas de Informação na <strong>UniLaSalle Rio de Janeiro</strong>, atualmente no 3º período.</p><p>Meu foco atual está em <strong>Python, SQL, análise de dados, automação e APIs</strong>. Tenho desenvolvido projetos para transformar conhecimento acadêmico em aplicações práticas e estou em busca do meu primeiro estágio em tecnologia para aprender com uma equipe e evoluir profissionalmente.</p><p>Também mantenho meus projetos anteriores em <strong>Java, Spring Boot e desenvolvimento de sistemas</strong>, mostrando minha evolução e experiência prática com diferentes tecnologias.</p><div class="tags"><span class="tag highlight">Aberto a estágio</span><span class="tag">3º período</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Análise de dados</span><span class="tag">Automação</span></div></div><div class="stats-grid fade-in"><div class="stat-card"><div class="stat-num">Python</div><div class="stat-label">Foco atual</div></div><div class="stat-card"><div class="stat-num">SQL</div><div class="stat-label">Dados e bancos</div></div><div class="stat-card"><div class="stat-num">APIs</div><div class="stat-label">Desenvolvimento backend</div></div><div class="stat-card"><div class="stat-num">3º</div><div class="stat-label">Período da graduação</div></div></div></div></section>
+<section id="habilidades"><p class="section-label fade-in">Onde estou focando</p><h2 class="section-title fade-in">Habilidades</h2><div class="skills-grid"><div class="skill-card fade-in"><div class="skill-icon">🐍</div><div class="skill-name">Python</div><div class="skill-desc">Desenvolvimento de scripts, análise de dados, automação e aplicações.</div><span class="skill-status">Foco atual</span></div><div class="skill-card fade-in"><div class="skill-icon">📊</div><div class="skill-name">Análise de Dados</div><div class="skill-desc">Tratamento, exploração e visualização de dados com Python e ferramentas de análise.</div><span class="skill-status">Em desenvolvimento</span></div><div class="skill-card fade-in"><div class="skill-icon">🗄️</div><div class="skill-name">SQL / Bancos de dados</div><div class="skill-desc">Consultas, JOINs, modelagem relacional e manipulação de dados.</div><span class="skill-status">Em desenvolvimento</span></div><div class="skill-card fade-in"><div class="skill-icon">⚙️</div><div class="skill-name">Automação</div><div class="skill-desc">Criação de scripts para reduzir tarefas repetitivas e gerar resultados automaticamente.</div><span class="skill-status">Em desenvolvimento</span></div><div class="skill-card fade-in"><div class="skill-icon">🔌</div><div class="skill-name">APIs</div><div class="skill-desc">Experiência acadêmica com APIs REST e backend, incluindo projetos em Java e Spring.</div><span class="skill-status">Em desenvolvimento</span></div><div class="skill-card fade-in"><div class="skill-icon">☕</div><div class="skill-name">Java / Spring</div><div class="skill-desc">Projetos anteriores de backend e APIs REST mantidos no GitHub.</div><span class="skill-status">Experiência acadêmica</span></div></div></section>
+<section id="projetos"><p class="section-label fade-in">O que estou construindo</p><h2 class="section-title fade-in">Projetos</h2><p class="focus-note fade-in">A seleção principal agora acompanha meu direcionamento para <strong>Python, dados, automação e APIs</strong>. Os projetos antigos continuam disponíveis para mostrar minha evolução em Java, Spring e backend.</p><div class="proj-grid">
+<article class="proj-card featured fade-in"><div class="proj-header"><div class="proj-icon">📈</div><div class="proj-links"><a class="proj-link" href="https://github.com/lfillipebf-ai/analisador-dados-financeiros" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><span class="proj-badge focus">Projeto em destaque • Python</span><h3 class="proj-title">Analisador de Dados Financeiros</h3><p class="proj-desc">Projeto de análise de dados com Python para transformar transações financeiras fictícias em informações úteis. Inclui limpeza e tratamento de dados, análise exploratória, indicadores, consultas SQL, exportação de resultados e gráficos.</p><div class="proj-techs"><span class="proj-tech">Python</span><span class="proj-tech">Pandas</span><span class="proj-tech">Matplotlib</span><span class="proj-tech">SQLite</span><span class="proj-tech">SQL</span><span class="proj-tech">Jupyter</span></div></article>
+<article class="proj-card fade-in"><div class="proj-header"><div class="proj-icon">⚙️</div></div><span class="proj-badge focus">Novo • Em desenvolvimento</span><h3 class="proj-title">Automação de Relatórios com Python</h3><p class="proj-desc">Projeto planejado para automatizar a leitura de dados, geração de indicadores e criação de relatórios a partir de arquivos CSV e Excel, reforçando Python, Pandas e automação de tarefas.</p><div class="proj-techs"><span class="proj-tech">Python</span><span class="proj-tech">Pandas</span><span class="proj-tech">Excel</span><span class="proj-tech">CSV</span><span class="proj-tech">Automação</span></div></article>
+<article class="proj-card fade-in"><div class="proj-header"><div class="proj-icon">🔌</div></div><span class="proj-badge focus">Novo • Em desenvolvimento</span><h3 class="proj-title">Sistema de Gestão de Vagas API — Python</h3><p class="proj-desc">Nova versão orientada a Python de um projeto de backend, com API REST, persistência em banco de dados, validação de dados e documentação automática. O objetivo é demonstrar evolução para backend com Python.</p><div class="proj-techs"><span class="proj-tech">Python</span><span class="proj-tech">FastAPI</span><span class="proj-tech">SQL</span><span class="proj-tech">Pydantic</span><span class="proj-tech">API REST</span></div></article>
+<article class="proj-card fade-in"><div class="proj-header"><div class="proj-icon">💼</div><div class="proj-links"><a class="proj-link" href="https://github.com/lfillipebf-ai/sistema-gestao-vagas-" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><span class="proj-badge">Projeto anterior • Java</span><h3 class="proj-title">Sistema de Gestão de Vagas</h3><p class="proj-desc">Projeto de backend desenvolvido para praticar construção de sistemas e APIs. Mantido no portfólio para demonstrar a experiência anterior com Java e backend.</p><div class="proj-techs"><span class="proj-tech">Java</span><span class="proj-tech">Spring Boot</span><span class="proj-tech">API REST</span><span class="proj-tech">SQL</span></div></article>
+<article class="proj-card fade-in"><div class="proj-header"><div class="proj-icon">🔐</div><div class="proj-links"><a class="proj-link" href="https://github.com/lfillipebf-ai/sistema-login-api" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><span class="proj-badge">Projeto anterior • Backend</span><h3 class="proj-title">Sistema de Login API</h3><p class="proj-desc">Projeto de API voltado para autenticação e fundamentos de backend, mantido como parte da evolução acadêmica e prática em desenvolvimento de sistemas.</p><div class="proj-techs"><span class="proj-tech">Java</span><span class="proj-tech">Spring Boot</span><span class="proj-tech">API REST</span><span class="proj-tech">Banco de dados</span></div></article>
+<article class="proj-card fade-in"><div class="proj-header"><div class="proj-icon">🛒</div><div class="proj-links"><a class="proj-link" href="https://github.com/lfillipebf-ai/Loja-SQL" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><span class="proj-badge">Projeto anterior • SQL</span><h3 class="proj-title">Banco de Dados — Loja E-commerce</h3><p class="proj-desc">Projeto de banco de dados para praticar modelagem relacional e consultas SQL em um cenário de loja virtual.</p><div class="proj-techs"><span class="proj-tech">SQL</span><span class="proj-tech">Modelagem</span><span class="proj-tech">Banco relacional</span></div></article>
+</div></section>
+<section id="contato"><p class="section-label fade-in">Vamos conversar</p><h2 class="section-title fade-in">Contato</h2><div class="contato-grid"><div class="contato-info fade-in"><p>Estou em busca do meu primeiro estágio em TI e aberto a oportunidades nas áreas de desenvolvimento, backend, dados, automação e tecnologia em geral.</p><div class="contato-links"><a class="contato-link" href="mailto:lfillipebf@gmail.com"><span class="contato-link-icon">✉️</span>lfillipebf@gmail.com</a><a class="contato-link" href="https://www.linkedin.com/in/luis-fillipe-backer-faria-bb8101303/" target="_blank" rel="noopener noreferrer"><span class="contato-link-icon">💼</span>LinkedIn</a><a class="contato-link" href="https://github.com/lfillipebf-ai" target="_blank" rel="noopener noreferrer"><span class="contato-link-icon">🐙</span>GitHub</a><a class="contato-link" href="https://wa.me/5521971615757" target="_blank" rel="noopener noreferrer"><span class="contato-link-icon">💬</span>WhatsApp</a></div></div><form class="contato-form fade-in" id="contatoForm"><div class="form-group"><label for="nome">Nome</label><input id="nome" name="nome" type="text" required/></div><div class="form-group"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" required></textarea></div><p class="form-help">Ao enviar, o WhatsApp será aberto com a mensagem preenchida.</p><button class="btn btn-primary" type="submit">Enviar pelo WhatsApp</button></form></div></section>
+<footer>© 2026 Luis Fillipe Backer Faria · Sistemas de Informação · 3º período</footer>
+<script>const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));document.getElementById('contatoForm').addEventListener('submit',function(e){e.preventDefault();const nome=document.getElementById('nome').value.trim(),mensagem=document.getElementById('mensagem').value.trim();if(!nome||!mensagem)return;const texto=`Olá! Meu nome é ${nome}. ${mensagem}`;window.open(`https://wa.me/5521971615757?text=${encodeURIComponent(texto)}`,'_blank','noopener,noreferrer')});</script>
+</body></html>
