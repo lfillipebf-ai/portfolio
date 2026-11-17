@@ -1,41 +1,39 @@
-# 🌐 Portfólio Pessoal — Luis Fillipe Backer Faria
+# Portfólio Pessoal — Luis Fillipe Backer Faria
 
-Página de portfólio pessoal desenvolvida com HTML, CSS e JavaScript, apresentando minha trajetória, habilidades e 22 projetos na área de Tecnologia da Informação.
+Portfólio desenvolvido com HTML, CSS e JavaScript para apresentar minha formação, habilidades e projetos na área de Tecnologia da Informação.
 
-## ✨ Funcionalidades
+## Acessar
 
-* Design responsivo para desktop e dispositivos móveis
-* Animações suaves durante a navegação
-* Seções de Apresentação, Sobre Mim, Habilidades, Projetos e Contato
-* Integração com GitHub, LinkedIn e WhatsApp
-* Formulário de contato com envio direto para WhatsApp
+[Visualizar portfólio online](https://lfillipebf-ai.github.io/portfolio)
 
-## 🛠️ Tecnologias Utilizadas
+## Sobre
 
-* HTML5
-* CSS3
-* JavaScript
-* Google Fonts
+Estudante de Bacharelado em Sistemas de Informação na UniLaSalle RJ, atualmente no 3º período, em busca da primeira oportunidade de estágio em Tecnologia da Informação.
 
-## 🚀 Acessar o Projeto
+Foco atual em Python, SQL, análise de dados, automação e desenvolvimento de APIs, mantendo projetos acadêmicos em outras tecnologias.
 
-GitHub Pages:
-https://lfillipebf-ai.github.io/portfolio
+## Projetos em destaque
 
-## 📚 Objetivo do Projeto
+- [Analisador de Dados Financeiros](https://github.com/lfillipebf-ai/analisador-dados-financeiros) — Python, Pandas, SQLite, SQL, Matplotlib e Pytest.
+- [Help Desk](https://github.com/lfillipebf-ai/help-desk-api) — React, Node.js, Express, SQLite e API REST.
+- [Banco de Dados — Loja E-commerce](https://github.com/lfillipebf-ai/Loja-SQL) — MySQL, modelagem relacional e consultas SQL.
 
-Desenvolver um portfólio profissional para apresentar meus conhecimentos em desenvolvimento web e minha evolução na área de tecnologia.
+## Tecnologias do portfólio
 
-## 👨‍💻 Autor
+- HTML5
+- CSS3
+- JavaScript
+- Google Fonts
 
-Luis Fillipe Backer Faria
+## Funcionalidades
 
-Estudante de Sistemas de Informação – UniLaSalle Rio de Janeiro
+- Layout responsivo
+- Seções de apresentação, sobre, habilidades, projetos e contato
+- Links para GitHub, LinkedIn e WhatsApp
 
-📧 [lfillipebf@gmail.com](mailto:lfillipebf@gmail.com)
+## Autor
 
-🔗 LinkedIn:
-https://www.linkedin.com/in/luis-fillipe-backer-faria-bb8101303
+**Luis Fillipe Backer Faria**
 
-🐙 GitHub:
-https://github.com/lfillipebf-ai
+- [GitHub](https://github.com/lfillipebf-ai)
+- [LinkedIn](https://www.linkedin.com/in/luis-fillipe-backer-faria-bb8101303/)
